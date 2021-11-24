@@ -1,21 +1,64 @@
 /*Ajustes*/
 :root{
-  --color1: #502F4C;
-  --color2: #70587C;
-  --color3: #C8B8DB;
-  --color4: #F9F4F5;
+    --color1: #502F4C;
+    --color2: #70587C;
+    --color3: #C8B8DB;
+    --color4: #F9F4F5;
 }
-/*Navbar*/
-.cab{
-  background-color: var(--color1);
-}
-.car{
-  margin: auto;
-}
-
-
-@media( min-width:900px ){
-  .car{
-    
+  /*Navbar*/
+  .cab{
+    background-color: var(--color1);
   }
-}
+  /*Main*/
+  .car{
+    margin: auto;
+  }
+  img{
+    height: auto;
+  }
+  .sec1, .sec2{
+    margin: 20px;
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+    border-radius: 10px;
+  }
+  .video2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    width: 50%;
+    height: 400px;
+  }
+  .texto2{
+    order: 1;
+    width: 50%;
+  }
+  .video{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 400px;
+  }
+  .texto{
+    width: 50%;
+  }
+  .mapa{
+    width: 100%;
+    height: 200px;
+  }
+  @media(min-width:900px){
+    /*
+      .car{
+      padding-left:10%;
+      padding-right:10%;
+      padding-bottom:0;
+      padding-top:0;
+    }
+    */
+    .mapa{
+      height: 500px;
+    }
+  }

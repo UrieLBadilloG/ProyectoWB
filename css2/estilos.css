@@ -1,0 +1,31 @@
+/*Ajustes*/
+:root{
+  --color1: #502F4C;
+  --color2: #70587C;
+  --color3: #C8B8DB;
+  --color4: #F9F4F5;
+}
+/*Navbar*/
+.cab{
+  background-color: var(--color1);
+}
+/*Main*/
+.car{
+  margin: auto;
+
+}
+.contenido{
+  
+}
+.video{
+  
+}
+
+@media( min-width:900px ){
+  .car{
+    padding-left:10%;
+    padding-right:10%;
+    padding-bottom:0;
+    padding-top:0;
+  }
+}

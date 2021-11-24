@@ -1,6 +1,6 @@
 <?php
 $srv="DESKTOP-H3MGCA8";
-$base="AM";
+$base="UPIITRAVEL";
 $user="Uri";
 $pass="123456";
 $informacion=array("Database"=>$base, "UID"=>$user, "PWD"=>$pass);

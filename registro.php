@@ -15,8 +15,6 @@
         <div class="navegacion"style="background-image: url(resource/fondo.jpg);">
             <ul class="in">
                 <li><h2 style="background-image: url(resource/Logo.jpg);"></h2></li>
-
-
             </ul>
         </div>
         <div class="container">
@@ -24,20 +22,16 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <img src="resource/Logo.jpg">
-                        <!--h2 style="border: 1px solid grey;" class="nav-link link-dark" aria-current="page" >Registrar Cuenta</h2-->
                 </ul>
             </div>
             <div class="content">
                 <div class="block">
-                    <p><h1>Crear Usuario</h1></p>
-                    <!--p>ID del usuario</p>
-                    <form action="CRUD/crear.php" method="post" name="form-work">
-                    <div class="input-group mb-3">
-                        <input type="text" name="Nombre"  class="form-control" placeholder="ID usuario" aria-label="Nombre de usuario" aria-describedby="basic-addon1">
-                    </div-->
+                <form action="CRUD/crear.php" method="post" name="form-work">   
+                <p><h1>Crear Usuario</h1></p>
                     <p>Nombre completo</p>
                     <div class="input-group mb-3">
-                        <input   type="text" name="Nombree" class="form-control" placeholder="Nombre completo" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    
+                    <input   type="text" name="Nombree" class="form-control" placeholder="Nombre completo" aria-label="Nombre completo" aria-describedby="basic-addon1">
                     </div>
                     <p>Correo</p>
                     <form action="CRUD/crear.php" method="post" name="form-work">
@@ -50,22 +44,6 @@
                         <input type="password" name="Contraseña" class="form-control" placeholder="Contaseña" aria-label="Contaseña" aria-describedby="basic-addon1">
                     </div>
                     <form action="CRUD/crear.php" method="post" name="form-work">
-                    <!--p>Departamento</!--p>
-                    <select name="de" class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        
-                            <?php
-                            include("conexion.php");
-                            $consulta = "SELECT * FROM Departamento";
-                            $ejecutar = sqlsrv_query ($con, $consulta);
-                            while($fila=sqlsrv_fetch_array($ejecutar)){
-                             $id=$fila['ID_depto'];
-                            echo "<option value=".$fila['ID_depto'].">".$fila['ID_depto']."</option>";
-                            } 
-
-                            ?>
-
-                    </select-->
                     <p>Edad</p>
                     <form action="CRUD/crear.php" method="post" name="form-work">
                     <div class="input-group mb-3">
@@ -76,15 +54,6 @@
                     <div class="input-group mb-3">
                         <input type="text" name="dir" class="form-control" placeholder="Direccion" aria-label="" aria-describedby="basic-addon1">
                     </div>
-                    <!--p>Rango</!--p>
-                    <select-- name="ran" class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-
-                    </select-->
-
                     <button type="submit" class="btn btn-outline-secondary">Crear</button>
                     </form>
                     </form>

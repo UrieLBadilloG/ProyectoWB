@@ -1,18 +1,15 @@
 <?php
 include("../conexion.php");
-$iusu=$_POST["Nombre"];
-$sn=$_POST["Nombree"];
-$pw=$_POST["Contraseña"];
-$dp=$_POST["de"];
-$ed=$_POST["eda"];
-$di=$_POST["dir"];
-$ra=$_POST["ran"];
-$corr=$_POST["Corre"];
-print_r:  $_POST;
-$query="INSERT INTO Usuario(ID_usuario, ID_depto, Nombre, Edad, Direccion, Promedio_R, Rango, contraseña, Correo, Estado) values('$iusu','$dp','$sn', '$ed', '$di', NULL, '$ra', '$pw','$corr', 1)";
+$Nom=$_POST["Nombree"];
+$Cor=$_POST["Corre"];
+$Pass=$_POST["Contraseña"];
+$Ed=$_POST["eda"];
+$Dir=$_POST["dir"];
+
+$query="INSERT INTO Usuario(Nombre, Correo, Edad, direccion, Contraseña) values('$Nom', '$Cor', '$Ed', '$Dir', (SELECT dbo.fun_encriptar('$Pass')))";
 $res=sqlsrv_prepare($con , $query);
 if (sqlsrv_execute($res)) {
-//   echo"Datos insertados correctamente";
+   echo"Datos insertados correctamente";
 //header("admin-perfil-crear.php");
 }else {
        echo "Error al insertar los datos";
