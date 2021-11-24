@@ -10,19 +10,19 @@ if($dp!="NULL"){
   $res1=sqlsrv_prepare($con , $query);
   if (sqlsrv_execute($res1)) {
   // echo"Datos insertados correctamente";
- }
 }
- if($ctt!=NULL){
-   $query1="UPDATE USUARIO set contraseña = '$ctt' where ID_usuario=$Nom ";
-   $res2=sqlsrv_prepare($con , $query1);
-   if (sqlsrv_execute($res2)) {
+}
+if($ctt!=NULL){
+  $query1="UPDATE USUARIO set contraseña = '$ctt' where ID_usuario=$Nom ";
+  $res2=sqlsrv_prepare($con , $query1);
+  if (sqlsrv_execute($res2)) {
     // echo"Datos insertados correctamente";
     }
 }
- if($nm!=NULL){
-   $query2="UPDATE USUARIO set Nombre= '$nm' where ID_usuario=$Nom ";
-   $res3=sqlsrv_prepare($con , $query2);
-   if (sqlsrv_execute($res3)) {
+if($nm!=NULL){
+  $query2="UPDATE USUARIO set Nombre= '$nm' where ID_usuario=$Nom ";
+  $res3=sqlsrv_prepare($con , $query2);
+  if (sqlsrv_execute($res3)) {
      // echo"Datos insertados correctamente";
     }
 }
