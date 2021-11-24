@@ -9,3 +9,14 @@
 .cab{
   background-color: var(--color1);
 }
+.car{
+  margin: auto;
+}
+
+
+@media( min-width:900px ){
+  .car{
+    width: 70%;
+    padding-top: 20px;
+  }
+}
