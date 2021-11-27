@@ -9,7 +9,33 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript">
+		function muestraselect(str){ //funcion para crear la conexion asincronica
+			var conexion;
 
+			if(str==""){
+				document.getElementById("txtHint").innerHTML=""; // si la variable a enviar viene vacia retornamos a nada la funcion
+				return;
+			}
+			if (window.XMLHttpRequest){
+				conexion = new XMLHttpRequest();  // creamos una nueva instacion del obejeto XMLHttpRequest
+			}
+
+			// verificamos el onreadystatechange verifando que el estado sea de 4 y el estatus 200
+			conexion.onreadystatechange=function(){  
+				if(conexion.readyState==4 && conexion.status==200){
+					//especificamos que en el elemento HTML cuyo id esa el de "div" vacie todos los datos de la respuesta 
+					document.getElementById("div").innerHTML=conexion.responseText; 
+				}
+			}
+			//abrimos una conexion asincronica usando el metodo GET y le enviamos la variable c
+			conexion.open("GET", "lugarT.php?c="+str, true);
+			//po ultimo enviamos la conexion
+			conexion.send();
+
+		}
+			
+	</script>
   <title>Hello, world!</title>
 </head>
 
@@ -45,31 +71,34 @@
           <h3>Solicitud de vuelo</h3>
           <form action="">
             <h5 class="m-2">Origen</h5>
-            <select class="form-select" aria-label="">
+            <select class="form-select" aria-label="" id="select" onclick="muestraselect(this.value)">
               <option selected>Seleccione el origen de salida</option>
               <?php
-                include("conexion.php");
-                $consulta = "SELECT * FROM Lugar_vuelos";
-                $ejecutar = sqlsrv_query ($con, $consulta);
-                while($fila=sqlsrv_fetch_array($ejecutar)){
-                $Nm=$fila['Nombre'];
-                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
-                } 
+                include "lugarV.php";
+               // include("conexion.php");
+               // $consulta = "SELECT * FROM Lugar_vuelos";
+               // $ejecutar = sqlsrv_query ($con, $consulta);
+              //  while($fila=sqlsrv_fetch_array($ejecutar)){
+              //  $Nm=$fila['Nombre'];
+              //  echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
+             //   } 
               ?>
             </select>
-            <h5 class="m-2">Destino</h5>
-            <select class="form-select" aria-label="">
-              <option selected>Seleccione el destino</option>
-              <?php
-                include("conexion.php");
-                $consulta = "SELECT * FROM Lugar_turistico";
-                $ejecutar = sqlsrv_query ($con, $consulta);
-                while($fila=sqlsrv_fetch_array($ejecutar)){
-                $Nm=$fila['Nombre'];
-                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
-                } 
-              ?>
-            </select>
+            <div id="div">
+              <h5 class="m-2">Destino</h5>
+              <select class="form-select" aria-label="">
+                <option selected>Seleccione el destino</option>
+                <?php
+                  include("conexion.php");
+                  $consulta = "SELECT * FROM Lugar_turistico";
+                  $ejecutar = sqlsrv_query ($con, $consulta);
+                  while($fila=sqlsrv_fetch_array($ejecutar)){
+                  $Nm=$fila['Nombre'];
+                  echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
+                  } 
+                ?>
+              </select>
+            </div>
             <h5 class="m-2">Dia de entrada</h5>
             <input type="datetime-local">
             <h5 class="m-2">Dia de salida</h5>
