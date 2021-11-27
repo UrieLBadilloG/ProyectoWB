@@ -50,16 +50,28 @@
                         <h5 class="m-2">Lugar</h5>
                         <select class="form-select" aria-label="">
                             <option selected>Seleccione el lugar de viaje</option>
-                            <option value="1">Cancun</option>
-                            <option value="2">Tulum</option>
-                            <option value="3">Chiapas</option>
+                            <?php
+                                include("conexion.php");
+                                 $consulta = "SELECT * FROM Lugar_turistico";
+                                $ejecutar = sqlsrv_query ($con, $consulta);
+                                while($fila=sqlsrv_fetch_array($ejecutar)){
+                                $Nm=$fila['Nombre'];
+                                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
+                                } 
+                            ?>
                         </select>
                         <h5 class="m-2">Hotel</h5>
                         <select class="form-select" aria-label="">
                             <option selected>Seleccione su hotel</option>
-                            <option value="1">Grand velas</option>
-                            <option value="2">Vidanta</option>
-                            <option value="3">Nickelodeon</option>
+                            <?php
+                                include("conexion.php");
+                                 $consulta = "SELECT * FROM Hotel";
+                                $ejecutar = sqlsrv_query ($con, $consulta);
+                                while($fila=sqlsrv_fetch_array($ejecutar)){
+                                $Nm=$fila['Nombre'];
+                                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
+                                } 
+                            ?>
                         </select>
                         <h5 class="m-2">Dia de entrada</h5>
                         <input type="datetime-local">
