@@ -13,14 +13,6 @@
 .car {
   margin: auto;
 }
-/* img {
-  height: auto;
-} */
-.car-item-custom {
-  height: auto; 
-  /* 600px; */
-}
-
 .sec1,
 .sec2 {
   margin: 20px;
@@ -28,9 +20,6 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-}
-.cses {
-  float: left;
 }
 .video2 {
   display: flex;
@@ -58,6 +47,20 @@
   width: 100%;
   height: 200px;
 }
+.formulario,
+.mapa2{
+  width: 50%;
+  height: 500px;
+  padding: 30px;
+}
+.formulario{
+  order:1;
+  text-align: center;
+}
+.mapa2{
+  order: 2;
+
+}
 @media (min-width: 900px) {
   /*
       .car{
@@ -69,5 +72,19 @@
     */
   .mapa {
     height: 500px;
+  }
+}
+@media (max-width: 900px){
+  .sec1,
+  .sec2{ 
+    display: block;
+  }
+  .formulario,
+  .mapa2,
+  .video,
+  .video2,
+  .texto,
+  .texto2{
+  width: 100%;
   }
 }

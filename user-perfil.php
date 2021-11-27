@@ -42,8 +42,7 @@
                       include("conexion.php");
                       //$ID = $_POST['USER'];
                      $consulta = "SELECT USUARIO.Nombre AS Nombre,Departamento.Nombre AS Depto,USUARIO.Promedio_R AS Promedio FROM USUARIO,Departamento
-                     
-                      WHERE (USUARIO.ID_depto = Departamento.ID_depto) AND (USUARIO.ID_usuario = 111111)";
+                                  WHERE (USUARIO.ID_depto = Departamento.ID_depto) AND (USUARIO.ID_usuario = 111111)";
                       $ejecutar = sqlsrv_query ($con, $consulta);
 
                       $fila=sqlsrv_fetch_array($ejecutar);

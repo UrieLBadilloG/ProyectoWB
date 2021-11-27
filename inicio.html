@@ -16,6 +16,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles/style-admin.css">
   </head>
   <body>
     <header>
@@ -35,12 +36,16 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-              <a class="nav-link" href="#">Vuelos</a>
-              <a class="nav-link" href="#">Alojamientos</a>
+              <a class="nav-link active" aria-current="page" href="inicio.html">Inicio</a>
+              <a class="nav-link" href="vuelos2.html">Vuelos</a>
+              <a class="nav-link" href="alojamiento.html">Alojamientos</a>
               <a class="nav-link" href="#">Paquetes</a>
+              <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                Mi historial
+              </a>
+              <a id="div12" class="nav-link" href="index.php">Cerrar sesion</a>
             </div>
-            <div id="div12" class="cses"><a  href="index.php">Cerrar sesion</a></div>
+            
           </div>
         </div>
       </nav>
@@ -73,10 +78,16 @@
               data-bs-slide-to="2"
               aria-label="Slide 3"
             ></button>
+            <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
-              <img src="img/playa.jpg" class="d-block w-100 car-item-custom" alt="..." />
+              <img src="img/elpepe.jpg" class="d-block w-100 car-item-custom" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h5>¿A donde quieres viajar?</h5>
                 <p>
@@ -85,7 +96,7 @@
               </div>
             </div>
             <div class="carousel-item" data-bs-interval="10000">
-              <img src="img/img-1.jpg" class="d-block w-100 car-item-custom" alt="..." />
+              <img src="img/img2.jpg" class="d-block w-100 car-item-custom" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
                 <p>
@@ -94,11 +105,20 @@
               </div>
             </div>
             <div class="carousel-item" data-bs-interval="10000">
-              <img src="img/img-1.jpg" class="d-block w-100 car-item-custom" alt="..." />
+              <img src="img/img3.jpg" class="d-block w-100 car-item-custom" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h5>Third slide label</h5>
                 <p>
                   Some representative placeholder content for the third slide.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <img src="img/img4.jpg" class="d-block w-100 car-item-custom" alt="..." />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>
+                  Some representative placeholder content for the second slide.
                 </p>
               </div>
             </div>
@@ -125,18 +145,18 @@
       </header>
       <div class="contenido">
         <div class="sec1 shadow-lg p-3 mb-5 bg-body rounded">
-          <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/sw7463aYB5k?autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="video p-3">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sw7463aYB5k?autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <div class="texto">
+          <div class="texto p-3">
             <p>"Los viajes son en la juventud una parte de educación y, en la vejez, una parte de experiencia." Francis Bacon </p>
           </div>
         </div>
         <div class="sec2 shadow-lg p-3 mb-5 bg-body rounded">
-          <div class="video2">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/nOBv6JRvTb4?autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="video2 p-3">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/nOBv6JRvTb4?autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <div class="texto2">
+          <div class="texto2 p-3">
             <p>“El auténtico viaje es ir. Una vez se ha llegado, se acaba el viaje. Hoy día, la gente comienza por el final.” Hugo Verlomme </p>
           </div>
         </div>
@@ -144,6 +164,46 @@
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15368143.3020191!2d-103.24700910195502!3d19.882723930390437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2zTcOpeGljbw!5e0!3m2!1ses-419!2smx!4v1637727767985!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         
       </div>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Historial</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div style="text-align: center;" class="offcanvas-body">
+            <h3>Bienvenido</h3>
+            <h4>Uriel Badillo Garrido</h4>
+            <div class="card">
+                <div class="card-header">
+                  Vuelo a Cancun
+                </div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>Uriel compro un vuelo de CDMX a  Cancun para la fecha de 24/sep/2022</p>
+                  </blockquote>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                  Vuelo a Cancun
+                </div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>Uriel compro un vuelo de Cancun a CDMX para la fecha de 30/sep/2022</p>
+                  </blockquote>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                  Vuelo a Cancun
+                </div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>Uriel compro un vuelo de Cancun a Chiapas para la fecha de 14/Oct/2022</p>
+                  </blockquote>
+                </div>
+            </div>
+        </div>
+      </div>  
     </main>
     <!-- Bootstrap JavaScript Libraries -->
     <script
