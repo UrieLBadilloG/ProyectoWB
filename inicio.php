@@ -36,9 +36,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="inicio.html">Inicio</a>
-              <a class="nav-link" href="vuelos2.html">Vuelos</a>
-              <a class="nav-link" href="alojamiento.html">Alojamientos</a>
+              <a class="nav-link active" aria-current="page" href="inicio.php">Inicio</a>
+              <a class="nav-link" href="vuelos2.php">Vuelos</a>
+              <a class="nav-link" href="alojamiento.php">Alojamientos</a>
               <a class="nav-link" href="#">Paquetes</a>
               <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 Mi historial
