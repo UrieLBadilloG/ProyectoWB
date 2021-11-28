@@ -71,22 +71,22 @@
           <h3>Solicitud de vuelo</h3>
           <form action="">
             <h5 class="m-2">Origen</h5>
-            <select class="form-select" aria-label="" id="select" onclick="muestraselect(this.value)">
+            <select class="form-select" aria-label="">
               <option selected>Seleccione el origen de salida</option>
               <?php
-                include "lugarV.php";
-               // include("conexion.php");
-               // $consulta = "SELECT * FROM Lugar_vuelos";
-               // $ejecutar = sqlsrv_query ($con, $consulta);
-              //  while($fila=sqlsrv_fetch_array($ejecutar)){
-              //  $Nm=$fila['Nombre'];
-              //  echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
-             //   } 
+               // include "lugarV.php";
+                include("conexion.php");
+                $consulta = "SELECT * FROM Lugar_vuelos";
+                $ejecutar = sqlsrv_query ($con, $consulta);
+                while($fila=sqlsrv_fetch_array($ejecutar)){
+                $Nm=$fila['Nombre'];
+                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
+                } 
               ?>
             </select>
             <div id="div">
               <h5 class="m-2">Destino</h5>
-              <select class="form-select" aria-label="">
+              <select name="select" id="select" class="form-select" aria-label="">
                 <option selected>Seleccione el destino</option>
                 <?php
                   include("conexion.php");

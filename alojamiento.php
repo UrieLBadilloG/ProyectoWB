@@ -9,7 +9,29 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript">
+		function muestraselect(str){ 
+			var conexion;
 
+			if(str==""){
+				document.getElementById("txtHint").innerHTML=""; 
+				return;
+			}
+			if (window.XMLHttpRequest){
+				conexion = new XMLHttpRequest();  
+			}
+
+			
+			conexion.onreadystatechange=function(){  
+				if(conexion.readyState==4 && conexion.status==200){
+					document.getElementById("div").innerHTML=conexion.responseText; 
+				}
+			}
+			conexion.open("GET", "LugarH.php?c="+str, true);
+			conexion.send();
+		}
+			
+	</script>
     <title>Hello, world!</title>
 </head>
 
@@ -48,7 +70,7 @@
                     <h3>Solicitud de alojamiento</h3>
                     <form action="">
                         <h5 class="m-2">Lugar</h5>
-                        <select class="form-select" aria-label="">
+                        <select name="select" id="select" class="form-select" onclick="muestraselect(this.value)">
                             <option selected>Seleccione el lugar de viaje</option>
                             <?php
                                 include("conexion.php");
@@ -56,23 +78,16 @@
                                 $ejecutar = sqlsrv_query ($con, $consulta);
                                 while($fila=sqlsrv_fetch_array($ejecutar)){
                                 $Nm=$fila['Nombre'];
-                                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
+                                echo "<option value=".$fila['ID_lugart'].">".$fila['Nombre']."</option>";
                                 } 
                             ?>
                         </select>
                         <h5 class="m-2">Hotel</h5>
-                        <select class="form-select" aria-label="">
-                            <option selected>Seleccione su hotel</option>
-                            <?php
-                                include("conexion.php");
-                                 $consulta = "SELECT * FROM Hotel";
-                                $ejecutar = sqlsrv_query ($con, $consulta);
-                                while($fila=sqlsrv_fetch_array($ejecutar)){
-                                $Nm=$fila['Nombre'];
-                                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
-                                } 
-                            ?>
-                        </select>
+                        <div id="div">
+                            <select name="select" id="select" class="form-select">
+                                <option selected>Seleccione su hotel</option>
+                            </select>
+                        </div>
                         <h5 class="m-2">Dia de entrada</h5>
                         <input type="datetime-local">
                         <h5 class="m-2">Dia de salida</h5>
