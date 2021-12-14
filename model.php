@@ -9,7 +9,7 @@ class Model
 
     }
     function Logear(){
-        $cadenaCnx="sqlsrv:Server=ingweb.database.windows.net;Database=UPIITRAVEL2";
+        $cadenaCnx="sqlsrv:Server=ingweb.database.windows.net,1433;Database=UPIITRAVEL2";
         $user="Uri";
         $pass="123456.b";
         $cnx= new PDO($cadenaCnx, $user, $pass);

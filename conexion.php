@@ -1,5 +1,5 @@
 <?php
-$srv="ingweb.database.windows.net";
+$srv="ingweb.database.windows.net,1433";
 $base="UPIITRAVEL2";
 $user="Uri";
 $pass="123456.b";
