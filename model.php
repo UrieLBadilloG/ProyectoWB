@@ -9,9 +9,9 @@ class Model
 
     }
     function Logear(){
-        $cadenaCnx="sqlsrv:Server=DESKTOP-H3MGCA8;Database=UPIITRAVEL";
+        $cadenaCnx="sqlsrv:Server=ingweb.database.windows.net;Database=UPIITRAVEL2";
         $user="Uri";
-        $pass="123456";
+        $pass="123456.b";
         $cnx= new PDO($cadenaCnx, $user, $pass);
         
         try{
@@ -25,8 +25,8 @@ class Model
             return $filaModel;
 
         }catch(PDOException $e){
-          echo"Error en la conexion".$e;
-       }
+        echo"Error en la conexion".$e;
+        }
     }
 
 }

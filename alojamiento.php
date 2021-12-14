@@ -1,3 +1,10 @@
+<?php
+  if(isset($_COOKIE['IDusr']) && $_COOKIE['IDusr'] > 0){
+    //echo "ID: " . $_COOKIE['IDusr'];
+  } else{
+    header("refresh:0; index.php");
+  }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/estiloss.css" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -20,8 +27,6 @@
 			if (window.XMLHttpRequest){
 				conexion = new XMLHttpRequest();  
 			}
-
-			
 			conexion.onreadystatechange=function(){  
 				if(conexion.readyState==4 && conexion.status==200){
 					document.getElementById("div").innerHTML=conexion.responseText; 
@@ -30,6 +35,43 @@
 			conexion.open("GET", "LugarH.php?c="+str, true);
 			conexion.send();
 		}
+        function estados(str){ 
+			var conexion;
+
+			if(str==""){
+				document.getElementById("txtHint").innerHTML=""; 
+				return;
+			}
+			if (window.XMLHttpRequest){
+				conexion = new XMLHttpRequest();  
+			}
+			conexion.onreadystatechange=function(){  
+				if(conexion.readyState==4 && conexion.status==200){
+					document.getElementById("dv").innerHTML=conexion.responseText; 
+				}
+			}
+			conexion.open("GET", "estadoH.php?c="+str, true);
+			conexion.send();
+		}
+        function incrustarMapa(){
+            var conexion;
+                    if (window.XMLHttpRequest){
+                        conexion = new XMLHttpRequest(); 
+                    }
+            conexion.onreadystatechange=function(){  
+                        if(conexion.readyState==4 && conexion.status==200){
+                            document.getElementById("mapaVuelos").innerHTML = conexion.responseText; 
+                            //alert(this.responseText);
+                }
+                    }
+            var IDEstado = document.getElementById("s").value;
+            conexion.open("POST", "CRUD/VuelosMapa.php", true);
+            conexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            var params = "IDestado=" + IDEstado;
+            // alert("Params: " + params);
+            conexion.send(params);
+        }
 			
 	</script>
     <title>Hello, world!</title>
@@ -57,9 +99,11 @@
                             Mi historial
                         </a>
                         <!--Hasta aqui porque estas todo tonto-->
-                        <a id="div12" class="nav-link" href="index.php">Cerrar sesion</a>
                     </div>
                 </div>
+            </div>
+            <div class="d-flex">
+                <a id="div12" class="nav-link" href="index.php">Cerrar sesion</a>
             </div>
         </nav>
     </header>
@@ -68,37 +112,45 @@
             <div class="sec1 shadow-lg p-3 mb-5 bg-body rounded">
                 <section class="formulario">
                     <h3>Solicitud de alojamiento</h3>
-                    <form action="">
-                        <h5 class="m-2">Lugar</h5>
-                        <select name="select" id="select" class="form-select" onclick="muestraselect(this.value)">
-                            <option selected>Seleccione el lugar de viaje</option>
+                    <form action="CRUD/FacAlojamiento.php" method="post">
+                    <h5 class="m-2">Estado</h5>
+                        <select name="select" id="s" class="form-select" onclick="estados(this.value)" onchange="incrustarMapa()">
+                            <option selected>Seleccione un estado</option>
                             <?php
                                 include("conexion.php");
-                                 $consulta = "SELECT * FROM Lugar_turistico";
+                                 $consulta = "SELECT * FROM estados";
                                 $ejecutar = sqlsrv_query ($con, $consulta);
                                 while($fila=sqlsrv_fetch_array($ejecutar)){
-                                $Nm=$fila['Nombre'];
-                                echo "<option value=".$fila['ID_lugart'].">".$fila['Nombre']."</option>";
+                                echo "<option value=".$fila['ID_estado'].">".$fila['Nombre']."</option>";
                                 } 
                             ?>
                         </select>
+                        <h5 class="m-2">Lugar</h5>
+                        <div id="dv">
+                        <select name="select" id="select" class="form-select" onclick="muestraselect(this.value)">
+                            <option selected>Seleccione el lugar de viaje</option>
+                        </select>
+                        </div>
                         <h5 class="m-2">Hotel</h5>
                         <div id="div">
-                            <select name="select" id="select" class="form-select">
-                                <option selected>Seleccione su hotel</option>
+                            <select name="sel" id="select" class="form-select">
+                                <option selected>Primero seleccione lugar de viaje</option>
                             </select>
                         </div>
                         <h5 class="m-2">Dia de entrada</h5>
-                        <input type="datetime-local">
+                        <input type="date" name="ent">
                         <h5 class="m-2">Dia de salida</h5>
-                        <input type="datetime-local">
+                        <input type="date" name="sal">
                         <h5 class="m-2">Num personas</h5>
                         <input class="form-control" type="number" placeholder="Numero">
+                        <div>
+                            <button type="submit" class="btn btn-outline-secondary m-2">Realizar apartado</button>
+                        </div>
                     </form>
                 </section>
-                <section class="mapa2">
+                <section id="mapaVuelos" class="mapa2">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d338189.0293208603!2d-87.21568917732472!3d20.526869520840226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4e5d781aae6d93%3A0xd9906e1324d837f9!2sGrand%20Velas%20Riviera%20Maya!5e0!3m2!1ses-419!2smx!4v1637969460802!5m2!1ses-419!2smx"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15007912.237317769!2d-111.64056310536196!3d23.314268494456325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2zTcOpeGljbw!5e0!3m2!1ses-419!2smx!4v1639438412530!5m2!1ses-419!2smx"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </section>
             </div>
@@ -112,38 +164,50 @@
                     aria-label="Close"></button>
             </div>
             <div style="text-align: center;" class="offcanvas-body">
-                <h3>Bienvenido</h3>
-                <h4>Uriel</h4>
                 <div class="card">
                     <div class="card-header">
-                        Vuelo a Cancun
+                        Vuelos
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
-                            <p>Uriel compro un vuelo de CDMX a Cancun para la fecha de 24/sep/2022</p>
+                        <?php
+                                $n=1;
+                                include("conexion.php");
+                                $procedure_params = array($_COOKIE['IDusr']);
+                                $consulta = "EXECUTE sp_selectVuelosUser ?";
+                                $ejecutar = sqlsrv_query ($con, $consulta, $procedure_params);
+                                while($fila=sqlsrv_fetch_array($ejecutar)){
+                                        $date= $fila['diaVuelo'];
+                                        echo "<p>".$n.'.-Compro un vuelo de ' .$fila['estadoOri'].' hacia '.$fila['estadoDes'].' con fecha: '.$date->format('20y-m-d')."</p>";
+                                        $n=$n+1;
+                                }
+                        ?>
                         </blockquote>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">
-                        Vuelo a Cancun
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>Uriel compro un vuelo de Cancun a CDMX para la fecha de 30/sep/2022</p>
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        Vuelo a Cancun
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>Uriel compro un vuelo de Cancun a Chiapas para la fecha de 14/Oct/2022</p>
-                        </blockquote>
-                    </div>
-                </div>
+          <div class="card-header">
+            Alojamientos
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <?php
+              $n=1;
+                            include("conexion.php");
+                            $procedure_params = array($_COOKIE['IDusr']);
+                            $consulta = "EXECUTE sp_selectAlojamientosUser ?";
+                            $ejecutar = sqlsrv_query ($con, $consulta, $procedure_params);
+                            while($fila=sqlsrv_fetch_array($ejecutar)){
+                                    $date= $fila['Entrada'];
+                                    $date2= $fila['Salida'];
+                                    echo "<p>".$n.'.-Solicito alojamiento en el hotel:  ' .$fila['Hotel'].' en '.$fila['LugarTurist'].' con fecha de entrada: '.$date->format('20y-m-d').' y fecha de salida: '.$date2->format('20y-m-d')."</p>";
+                                    $n=$n+1;
+                            }
+                            
+              ?>
+            </blockquote>
+          </div>
+        </div>
             </div>
         </div>
     </main>

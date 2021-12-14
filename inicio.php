@@ -1,3 +1,11 @@
+<?php
+  if(isset($_COOKIE['IDusr']) && $_COOKIE['IDusr'] > 0){
+    //echo "ID: " . $_COOKIE['IDusr'];
+  } else{
+    header("refresh:0; index.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +16,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" href="css/estilos.css" />
     <!-- Bootstrap CSS v5.0.2 -->
     <link
       rel="stylesheet"
@@ -16,11 +23,12 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/estilos.css" />
     <link rel="stylesheet" href="styles/style-admin.css">
   </head>
   <body>
     <header>
-      <nav class="cab navbar navbar-expand-lg navbar-dark p-3">
+      <nav class="cab navbar navbar-expand-lg navbar-light p-3">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">UPIITRAVEL</a>
           <button
@@ -42,11 +50,19 @@
               <a class="nav-link" href="paquetes.php">Paquetes</a>
               <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 Mi historial
+                <?php
+                  if(isset($_COOKIE['IDusr'])){
+                    //echo "ID: " . $_COOKIE['IDusr'];
+                  } else{
+                   // echo "NONE";
+                  }
+                ?>
               </a>
-              <a id="div12" class="nav-link" href="index.php">Cerrar sesion</a>
             </div>
-            
           </div>
+        </div>
+        <div class="d-flex">
+          <a id="div12" class="nav-link" href="index.php">Cerrar sesion</a>
         </div>
       </nav>
     </header>
@@ -144,23 +160,23 @@
         </div>
       </header>
       <div class="contenido">
-        <div class="sec1 shadow-lg p-3 mb-5 bg-body rounded">
-          <div class="video p-3">
+        <div style="display: flex; height: 500px;" class="sec1 shadow-lg p-3 mb-5 bg-body rounded">
+          <div style="width: 50%;" class="video p-3">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sw7463aYB5k?autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="texto p-3">
             <p>"Los viajes son en la juventud una parte de educación y, en la vejez, una parte de experiencia." Francis Bacon </p>
           </div>
         </div>
-        <div class="sec2 shadow-lg p-3 mb-5 bg-body rounded">
-          <div class="video2 p-3">
+        <div style="display: flex; height: 500px" class="sec2 shadow-lg p-3 mb-5 bg-body rounded">
+          <div style="width: 50%;" class="video2 p-3">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/nOBv6JRvTb4?autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="texto2 p-3">
             <p>“El auténtico viaje es ir. Una vez se ha llegado, se acaba el viaje. Hoy día, la gente comienza por el final.” Hugo Verlomme </p>
           </div>
         </div>
-        <div class="mapa">
+        <div style="height: 400px;" class="mapa">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15368143.3020191!2d-103.24700910195502!3d19.882723930390437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2zTcOpeGljbw!5e0!3m2!1ses-419!2smx!4v1637727767985!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         
       </div>
@@ -171,37 +187,50 @@
         </div>
         <div style="text-align: center;" class="offcanvas-body">
             <h3>Bienvenido</h3>
-            <h4>Uriel Badillo Garrido</h4>
             <div class="card">
                 <div class="card-header">
-                  Vuelo a Cancun
+                  Vuelos
                 </div>
                 <div class="card-body">
                   <blockquote class="blockquote mb-0">
-                    <p>Uriel compro un vuelo de CDMX a  Cancun para la fecha de 24/sep/2022</p>
+                  <?php
+                                $n=1;
+                                include("conexion.php");
+                                $procedure_params = array($_COOKIE['IDusr']);
+                                $consulta = "EXECUTE sp_selectVuelosUser ?";
+                                $ejecutar = sqlsrv_query ($con, $consulta, $procedure_params);
+                                while($fila=sqlsrv_fetch_array($ejecutar)){
+                                        $date= $fila['diaVuelo'];
+                                        echo "<p>".$n.'.-Compro un vuelo de ' .$fila['estadoOri'].' hacia '.$fila['estadoDes'].' con fecha: '.$date->format('20y-m-d')."</p>";
+                                        $n=$n+1;
+                                }
+                        ?>
                   </blockquote>
                 </div>
             </div>
             <div class="card">
-                <div class="card-header">
-                  Vuelo a Cancun
-                </div>
-                <div class="card-body">
-                  <blockquote class="blockquote mb-0">
-                    <p>Uriel compro un vuelo de Cancun a CDMX para la fecha de 30/sep/2022</p>
-                  </blockquote>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                  Vuelo a Cancun
-                </div>
-                <div class="card-body">
-                  <blockquote class="blockquote mb-0">
-                    <p>Uriel compro un vuelo de Cancun a Chiapas para la fecha de 14/Oct/2022</p>
-                  </blockquote>
-                </div>
-            </div>
+          <div class="card-header">
+            Alojamientos
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <?php
+              $n=1;
+                            include("conexion.php");
+                            $procedure_params = array($_COOKIE['IDusr']);
+                            $consulta = "EXECUTE sp_selectAlojamientosUser ?";
+                            $ejecutar = sqlsrv_query ($con, $consulta, $procedure_params);
+                            while($fila=sqlsrv_fetch_array($ejecutar)){
+                                    $date= $fila['Entrada'];
+                                    $date2= $fila['Salida'];
+                                    echo "<p>".$n.'.-Solicito alojamiento en el hotel:  ' .$fila['Hotel'].' en '.$fila['LugarTurist'].' con fecha de entrada: '.$date->format('20y-m-d').' y fecha de salida: '.$date2->format('20y-m-d')."</p>";
+                                    $n=$n+1;
+                            }
+                            
+              ?>
+            </blockquote>
+          </div>
+        </div>
         </div>
       </div>  
     </main>

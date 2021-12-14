@@ -28,10 +28,21 @@
                 <div class="block">
                 <form action="CRUD/crear.php" method="post" name="form-work">   
                 <p><h1>Crear Usuario</h1></p>
-                    <p>Nombre completo</p>
+                    <p>Primer Nombre</p>
                     <div class="input-group mb-3">
-                    
-                    <input   type="text" name="Nombree" class="form-control" placeholder="Nombre completo" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    <input   type="text" name="Nombree" class="form-control" placeholder="Primer Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    </div>
+                    <p>Segundo Nombre</p>
+                    <div class="input-group mb-3">
+                    <input   type="text" name="Nombree2" class="form-control" placeholder="Segundo Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    </div>
+                    <p>Apellido paterno</p>
+                    <div class="input-group mb-3">
+                    <input   type="text" name="paterno" class="form-control" placeholder="Apellido paterno" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    </div>
+                    <p>Apellido materno</p>
+                    <div class="input-group mb-3">
+                    <input   type="text" name="materno" class="form-control" placeholder="Apellido materno" aria-label="Nombre completo" aria-describedby="basic-addon1">
                     </div>
                     <p>Correo</p>
                     <form action="CRUD/crear.php" method="post" name="form-work">
