@@ -68,7 +68,7 @@
             conexion.open("POST", "CRUD/VuelosMapa.php", true);
             conexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            var params = "IDestado=" + IDEstado;
+            var params = "IDestado=" + IDEstado + "&isAlojamiento=1";
             // alert("Params: " + params);
             conexion.send(params);
         }

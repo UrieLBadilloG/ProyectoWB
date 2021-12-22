@@ -25,11 +25,11 @@
                 </div>
                 <div class="mb-3">
                   <label for="username" class="form-label">Usuario</label>
-                  <input type="text" name="txtUsuario" class="form-control" id="username" aria-describedby="username">
+                  <input type="text" name="txtUsuario" class="form-control" id="username" aria-describedby="username" required>
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label">Contraseña</label>
-                  <input type="password" name="txtClave" class="form-control" id="password">
+                  <input type="password" name="txtClave" class="form-control" id="password" required>
                 </div>
                 <div>
                 <center>

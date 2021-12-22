@@ -5,7 +5,13 @@
         $user="Uri";
         $pass="123456.b";
         $cnx= new PDO($cadenaCnx, $user, $pass);
-    $consulta = $cnx->prepare("SELECT E.* FROM Estados AS E INNER JOIN Aeropuertos AS A ON A.ID_estado = E.ID_estado WHERE A.ID_aeropuerto = :paramEst");
+    $consulta = null;
+    if ( isset($_POST['isAlojamiento'])){
+        // Es de Alojamiento
+        $consulta = $cnx->prepare("SELECT * FROM Estados WHERE ID_estado = :paramEst");
+    }else {
+        $consulta = $cnx->prepare("SELECT E.* FROM Estados AS E INNER JOIN Aeropuertos AS A ON A.ID_estado = E.ID_estado WHERE A.ID_aeropuerto = :paramEst");
+    }
     $consulta->bindValue(":paramEst", $_POST['IDestado']);
     $consulta->execute();
     $fila = $consulta->fetch();
