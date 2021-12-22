@@ -30,40 +30,40 @@
                 <p><h1>Crear Usuario</h1></p>
                     <p>Primer Nombre</p>
                     <div class="input-group mb-3">
-                    <input   type="text" name="Nombree" class="form-control" placeholder="Primer Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    <input   type="text" name="Nombree" class="form-control" placeholder="Primer Nombre" aria-label="Nombre" aria-describedby="basic-addon1" required>
                     </div>
                     <p>Segundo Nombre</p>
                     <div class="input-group mb-3">
-                    <input   type="text" name="Nombree2" class="form-control" placeholder="Segundo Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    <input   type="text" name="Nombree2" class="form-control" placeholder="Segundo Nombre" aria-label="Nombre " aria-describedby="basic-addon1">
                     </div>
                     <p>Apellido paterno</p>
                     <div class="input-group mb-3">
-                    <input   type="text" name="paterno" class="form-control" placeholder="Apellido paterno" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    <input   type="text" name="paterno" class="form-control" placeholder="Apellido paterno" aria-label="Nombre completo" aria-describedby="basic-addon1" required>
                     </div>
                     <p>Apellido materno</p>
                     <div class="input-group mb-3">
-                    <input   type="text" name="materno" class="form-control" placeholder="Apellido materno" aria-label="Nombre completo" aria-describedby="basic-addon1">
+                    <input   type="text" name="materno" class="form-control" placeholder="Apellido materno" aria-label="Nombre completo" aria-describedby="basic-addon1" required>
                     </div>
                     <p>Correo</p>
                     <form action="CRUD/crear.php" method="post" name="form-work">
                     <div class="input-group mb-3">
-                        <input type="email" name="Corre" class="form-control" placeholder="Correo" aria-label="Contaseña" aria-describedby="basic-addon1">
+                        <input type="email" name="Corre" class="form-control" placeholder="Correo" aria-label="Contaseña" aria-describedby="basic-addon1" required>
                     </div>
                     <p>Contaseña</p>
                     <form action="CRUD/crear.php" method="post" name="form-work">
                     <div class="input-group mb-3">
-                        <input type="password" name="Contraseña" class="form-control" placeholder="Contaseña" aria-label="Contaseña" aria-describedby="basic-addon1">
+                        <input type="password" name="Contraseña" class="form-control" placeholder="Contaseña" aria-label="Contaseña" aria-describedby="basic-addon1" required>
                     </div>
                     <form action="CRUD/crear.php" method="post" name="form-work">
                     <p>Edad</p>
                     <form action="CRUD/crear.php" method="post" name="form-work">
                     <div class="input-group mb-3">
-                        <input type="text" name="eda" class="form-control" placeholder="Edad" aria-label="" aria-describedby="basic-addon1">
+                        <input type="text" name="eda" class="form-control" placeholder="Edad" aria-label="" aria-describedby="basic-addon1" required>
                     </div>
                     <p>Direccion</p>
                     <form action="CRUD/crear.php" method="post" name="form-work">
                     <div class="input-group mb-3">
-                        <input type="text" name="dir" class="form-control" placeholder="Direccion" aria-label="" aria-describedby="basic-addon1">
+                        <input type="text" name="dir" class="form-control" placeholder="Direccion" aria-label="" aria-describedby="basic-addon1" required>
                     </div>
                     <button type="submit" class="btn btn-outline-secondary">Crear</button>
                     </form>
