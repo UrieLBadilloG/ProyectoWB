@@ -60,7 +60,7 @@
 		}
 			
 	</script>
-  <title>Hello, world!</title>
+  <title>Vuelos</title>
 </head>
 
 <body>

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>UPIITRAVEL</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta

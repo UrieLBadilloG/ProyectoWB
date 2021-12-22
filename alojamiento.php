@@ -74,7 +74,7 @@
         }
 			
 	</script>
-    <title>Hello, world!</title>
+    <title>Alojamiento</title>
 </head>
 
 <body>
